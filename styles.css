@@ -58,6 +58,7 @@ body::before {
 }
 
 /* ===== АНИМИРОВАННЫЕ ПОЛУКРУГИ (SVG-стиль) ===== */
+/* ===== АНИМИРОВАННЫЕ ПОЛУКРУГИ ===== */
 .circles {
     position: fixed;
     top: 0;
@@ -72,11 +73,10 @@ body::before {
 .circle {
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
-    opacity: 0.15;
+    opacity: 0.2;
     filter: blur(60px);
-    transition: transform 0.1s ease-out;
-    will-change: transform;
+    transition: background 0.1s ease;
+    will-change: transform, background;
 }
 
 .circle-1 {
@@ -84,8 +84,7 @@ body::before {
     height: 600px;
     top: -200px;
     right: -200px;
-    background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-900) 100%);
-    opacity: 0.2;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
 }
 
 .circle-2 {
@@ -93,7 +92,7 @@ body::before {
     height: 500px;
     bottom: -150px;
     left: -150px;
-    background: linear-gradient(135deg, var(--gray-600) 0%, var(--gray-800) 100%);
+    background: linear-gradient(135deg, #4b5563 0%, #1f2937 100%);
     opacity: 0.15;
 }
 
@@ -102,8 +101,8 @@ body::before {
     height: 400px;
     top: 30%;
     right: 10%;
-    background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-900) 100%);
-    opacity: 0.12;
+    background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+    opacity: 0.18;
 }
 
 .circle-4 {
@@ -111,8 +110,8 @@ body::before {
     height: 350px;
     bottom: 20%;
     left: 15%;
-    background: linear-gradient(135deg, var(--gray-700) 0%, var(--gray-900) 100%);
-    opacity: 0.1;
+    background: linear-gradient(135deg, #4b5563 0%, #111827 100%);
+    opacity: 0.12;
 }
 
 .circle-5 {
@@ -120,8 +119,8 @@ body::before {
     height: 450px;
     top: 60%;
     right: 20%;
-    background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-700) 100%);
-    opacity: 0.08;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    opacity: 0.1;
 }
 
 /* ===== ШАПКА ===== */
