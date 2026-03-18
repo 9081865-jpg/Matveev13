@@ -670,3 +670,72 @@ section {
         width: 0;
     }
 }
+/* ===== ССЫЛКИ НА МЕССЕНДЖЕРЫ ===== */
+.contact-info a {
+    text-decoration: none;
+    color: var(--gray-700);
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: var(--blue-600);
+}
+
+.messengers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.messenger-link {
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.telegram {
+    background: linear-gradient(135deg, #0088cc, #005f8c);
+    color: white !important;
+}
+
+.telegram:hover {
+    background: linear-gradient(135deg, #00a0e0, #0077b3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+}
+
+.whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white !important;
+}
+
+.whatsapp:hover {
+    background: linear-gradient(135deg, #30e07a, #1fa089);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.separator {
+    color: var(--gray-400);
+    font-weight: 300;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 480px) {
+    .messengers {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .separator {
+        display: none;
+    }
+    
+    .messenger-link {
+        width: 100%;
+        text-align: center;
+    }
+}
