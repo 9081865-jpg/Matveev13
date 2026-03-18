@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваше Имя | Веб-разработчик</title>
+    <!-- Подключаем шрифт Inter (как на bespalaya.ru) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Наши стили -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Анимированные полукруги (будут двигаться при скролле) -->
+    <div class="circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+        <div class="circle circle-4"></div>
+    </div>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">Имя Фамилия</div>
+                <ul class="nav-menu">
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Главный экран (Hero) -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Разработка<br>сайтов-визиток</h1>
+                <p class="hero-subtitle">Современные, быстрые, адаптивные сайты для вашего бизнеса</p>
+                <button class="btn btn-primary" id="orderBtn">Заказать сайт</button>
+            </div>
+        </section>
+
+        <!-- Секция "Обо мне" -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">Обо мне</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Привет! Меня зовут [Ваше Имя]. Я начинающий веб-разработчик с горящими глазами и желанием создавать крутые проекты.</p>
+                        <p>Специализируюсь на небольших сайтах для малого бизнеса, частных специалистов и стартапов. Мой подход — чистый код, современный дизайн и внимание к деталям.</p>
+                        <p>Каждый мой проект адаптирован под мобильные устройства и загружается мгновенно.</p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Проектов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Адаптация</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">На связи</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "Услуги" -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Услуги</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🌐</div>
+                        <h3>Сайт-визитка</h3>
+                        <p>Компактный сайт с информацией о вас или компании. Идеально для старта.</p>
+                        <div class="service-price">от 15 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>Лендинг</h3>
+                        <p>Одностраничный сайт для продажи одного товара или услуги.</p>
+                        <div class="service-price">от 25 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Доработка</h3>
+                        <p>Правки, оптимизация, добавление функционала на существующий сайт.</p>
+                        <div class="service-price">договорная</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "Контакты" -->
+        <section id="contacts" class="contacts">
+            <div class="container">
+                <h2 class="section-title">Контакты</h2>
+                <div class="contacts-content">
+                    <div class="contact-info">
+                        <p>📞 +7 (999) 123-45-67</p>
+                        <p>✉️ your.email@example.com</p>
+                        <p>📱 Telegram / WhatsApp</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно (появится при клике на кнопку) -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Спасибо за заявку!</h3>
+            <p>Ваша заявка принята. В ближайшее время я свяжусь с вами для обсуждения деталей.</p>
+            <button class="btn btn-primary modal-close-btn">Хорошо</button>
+        </div>
+    </div>
+
+    <!-- Подключаем скрипты -->
+    <script src="script.js"></script>
+</body>
+</html>
