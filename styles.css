@@ -1,13 +1,63 @@
+/* ===== ПЕРЕМЕННЫЕ ===== */
+:root {
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --blue-800: #1e40af;
+    --blue-900: #1e3a8a;
+    --blue-100: #dbeafe;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --white: #ffffff;
+}
 
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--white) 100%);
+    color: var(--gray-800);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(55, 65, 81, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -2;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 10;
 }
 
-/* ===== АНИМИРОВАННЫЕ ПОЛУКРУГИ ===== */
+/* ===== АНИМИРОВАННЫЕ ПОЛУКРУГИ (SVG-стиль) ===== */
 .circles {
     position: fixed;
     top: 0;
@@ -23,70 +73,61 @@
     position: absolute;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
-    opacity: 0.1;
-    filter: blur(80px);
+    opacity: 0.15;
+    filter: blur(60px);
+    transition: transform 0.1s ease-out;
+    will-change: transform;
 }
 
 .circle-1 {
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     top: -200px;
-    right: -100px;
-    animation: moveCircle1 25s ease-in-out infinite alternate;
+    right: -200px;
+    background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-900) 100%);
+    opacity: 0.2;
 }
 
 .circle-2 {
-    width: 400px;
-    height: 400px;
-    bottom: -100px;
-    left: -100px;
+    width: 500px;
+    height: 500px;
+    bottom: -150px;
+    left: -150px;
     background: linear-gradient(135deg, var(--gray-600) 0%, var(--gray-800) 100%);
-    opacity: 0.08;
-    animation: moveCircle2 30s ease-in-out infinite alternate;
+    opacity: 0.15;
 }
 
 .circle-3 {
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
     top: 30%;
-    left: 20%;
-    animation: moveCircle3 20s ease-in-out infinite alternate;
+    right: 10%;
+    background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-900) 100%);
+    opacity: 0.12;
 }
 
 .circle-4 {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     bottom: 20%;
-    right: 15%;
-    background: linear-gradient(135deg, var(--gray-500) 0%, var(--gray-700) 100%);
-    opacity: 0.07;
-    animation: moveCircle4 22s ease-in-out infinite alternate;
+    left: 15%;
+    background: linear-gradient(135deg, var(--gray-700) 0%, var(--gray-900) 100%);
+    opacity: 0.1;
 }
 
-@keyframes moveCircle1 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(-150px, 200px) scale(1.2); }
-}
-
-@keyframes moveCircle2 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(200px, -150px) scale(1.3); }
-}
-
-@keyframes moveCircle3 {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(100px, -100px) rotate(30deg); }
-}
-
-@keyframes moveCircle4 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(-150px, 80px) scale(0.9); }
+.circle-5 {
+    width: 450px;
+    height: 450px;
+    top: 60%;
+    right: 20%;
+    background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-700) 100%);
+    opacity: 0.08;
 }
 
 /* ===== ШАПКА ===== */
 .header {
     padding: 20px 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--gray-200);
     position: sticky;
@@ -103,7 +144,10 @@
 .logo {
     font-size: 24px;
     font-weight: 700;
-    color: var(--blue-700);
+    background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-900) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .nav-menu {
@@ -114,19 +158,36 @@
 
 .nav-menu a {
     text-decoration: none;
-    color: var(--gray-600);
+    color: var(--gray-700);
     font-weight: 500;
     transition: color 0.3s;
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
+    transition: width 0.3s;
 }
 
 .nav-menu a:hover {
-    color: var(--blue-600);
+    color: var(--blue-700);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
 }
 
 /* ===== ГЛАВНЫЙ ЭКРАН ===== */
 .hero {
     padding: 120px 0 80px;
     text-align: center;
+    position: relative;
 }
 
 .hero-title {
@@ -134,7 +195,10 @@
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 20px;
-    color: var(--gray-900);
+    background: linear-gradient(135deg, var(--gray-900) 0%, var(--blue-800) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-subtitle {
@@ -156,16 +220,34 @@
     cursor: pointer;
     border: none;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn-primary {
-    background-color: var(--blue-600);
+    background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
     color: var(--white);
     box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: var(--blue-700);
     transform: translateY(-3px);
     box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
 }
@@ -173,6 +255,7 @@
 /* ===== СЕКЦИИ ===== */
 section {
     padding: 100px 0;
+    position: relative;
 }
 
 .section-title {
@@ -180,7 +263,20 @@ section {
     font-weight: 700;
     text-align: center;
     margin-bottom: 60px;
-    color: var(--gray-900);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--blue-600), var(--blue-800), var(--blue-600), transparent);
 }
 
 /* Обо мне */
@@ -195,6 +291,9 @@ section {
     margin-bottom: 20px;
     font-size: 18px;
     color: var(--gray-600);
+    position: relative;
+    padding-left: 20px;
+    border-left: 3px solid var(--blue-600);
 }
 
 .about-stats {
@@ -204,11 +303,28 @@ section {
     text-align: center;
 }
 
+.stat {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 1px solid var(--gray-200);
+    transition: transform 0.3s;
+}
+
+.stat:hover {
+    transform: translateY(-5px);
+    border-color: var(--blue-300);
+}
+
 .stat-number {
     display: block;
     font-size: 48px;
     font-weight: 700;
-    color: var(--blue-600);
+    background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 10px;
 }
 
@@ -225,23 +341,43 @@ section {
 }
 
 .service-card {
-    background-color: var(--white);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
     padding: 40px 30px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: all 0.3s;
     border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--blue-600), var(--blue-800));
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+}
+
+.service-card:hover::before {
+    transform: translateX(0);
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
-    border-color: var(--blue-100);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+    border-color: var(--blue-300);
 }
 
 .service-icon {
     font-size: 48px;
     margin-bottom: 20px;
+    filter: drop-shadow(0 5px 10px rgba(37, 99, 235, 0.2));
 }
 
 .service-card h3 {
@@ -259,24 +395,37 @@ section {
 .service-price {
     font-size: 20px;
     font-weight: 700;
-    color: var(--blue-600);
+    background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Контакты */
 .contacts {
-    background-color: var(--white);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(55, 65, 81, 0.05) 100%);
+    border-radius: 30px 30px 0 0;
 }
 
 .contact-info {
     max-width: 500px;
     margin: 0 auto;
     text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--gray-200);
 }
 
 .contact-info p {
     font-size: 20px;
     margin-bottom: 15px;
-    color: var(--gray-600);
+    color: var(--gray-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 /* ===== МОДАЛЬНОЕ ОКНО ===== */
@@ -287,7 +436,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     z-index: 1000;
     justify-content: center;
     align-items: center;
@@ -298,24 +448,15 @@ section {
 }
 
 .modal-content {
-    background-color: var(--white);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     padding: 50px;
     border-radius: 20px;
     max-width: 500px;
     text-align: center;
     position: relative;
-    animation: modalFadeIn 0.3s;
-}
-
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    border: 1px solid var(--gray-200);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .close-modal {
@@ -326,16 +467,26 @@ section {
     cursor: pointer;
     color: var(--gray-600);
     transition: color 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
 .close-modal:hover {
     color: var(--blue-600);
+    background: var(--gray-100);
 }
 
 .modal-content h3 {
     font-size: 28px;
     margin-bottom: 20px;
-    color: var(--gray-900);
+    background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-800) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .modal-content p {
@@ -344,7 +495,19 @@ section {
     margin-bottom: 15px;
 }
 
-/* ===== АДАПТАЦИЯ ПОД ТЕЛЕФОНЫ ===== */
+/* ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== АДАПТАЦИЯ ===== */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 40px;
@@ -356,10 +519,15 @@ section {
     }
 
     .nav-menu {
-        display: none; /* Для простоты скроем меню на телефонах */
+        display: none;
     }
 
     .circle {
-        filter: blur(50px);
+        filter: blur(40px);
+    }
+    
+    .circle-1 {
+        width: 300px;
+        height: 300px;
     }
 }

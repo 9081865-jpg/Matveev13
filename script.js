@@ -1,4 +1,3 @@
-// Ждем загрузки страницы
 document.addEventListener('DOMContentLoaded', function() {
     
     // ===== МОДАЛЬНОЕ ОКНО =====
@@ -6,23 +5,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('orderModal');
     const closeButtons = document.querySelectorAll('.close-modal, .modal-close-btn');
     
-    // Открыть модальное окно
     if (orderBtn) {
         orderBtn.addEventListener('click', function() {
             modal.classList.add('show');
-            document.body.style.overflow = 'hidden'; // запретить скролл страницы
+            document.body.style.overflow = 'hidden';
         });
     }
     
-    // Закрыть модальное окно (на крестик или кнопку "Хорошо")
     closeButtons.forEach(btn => {
         btn.addEventListener('click', function() {
             modal.classList.remove('show');
-            document.body.style.overflow = ''; // вернуть скролл
+            document.body.style.overflow = '';
         });
     });
     
-    // Закрыть при клике вне модального окна
     window.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.classList.remove('show');
@@ -30,25 +26,51 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ===== АНИМАЦИЯ ПОЛУКРУГОВ ПРИ СКРОЛЛЕ =====
+    // ===== ПАРАЛЛАКС ЭФФЕКТ ДЛЯ ПОЛУКРУГОВ =====
     const circles = document.querySelectorAll('.circle');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
     
-    window.addEventListener('scroll', function() {
+    function updateCircles() {
         const scrollY = window.scrollY;
         const maxScroll = document.body.scrollHeight - window.innerHeight;
-        const scrollPercent = scrollY / maxScroll;
+        const scrollPercent = Math.min(scrollY / maxScroll, 1);
         
         circles.forEach((circle, index) => {
-            // Двигаем круги в зависимости от прокрутки
-            const moveX = scrollPercent * 100 * (index % 2 === 0 ? 1 : -1);
-            const moveY = scrollPercent * 50 * (index < 2 ? 1 : -1);
+            // Разные скорости движения для разных кругов
+            const speed = 0.5 + (index * 0.2);
+            const direction = index % 2 === 0 ? 1 : -1;
             
-            // Добавляем движение к существующей анимации
-            circle.style.transform = `translate(${moveX}px, ${moveY}px) scale(${1 + scrollPercent * 0.2})`;
+            // Движение по X и Y с разной амплитудой
+            const moveX = scrollPercent * 200 * direction * speed;
+            const moveY = scrollPercent * 150 * (index < 3 ? 1 : -1) * speed;
+            
+            // Масштабирование
+            const scale = 1 + scrollPercent * 0.3;
+            
+            // Поворот для некоторых кругов
+            const rotate = index > 1 ? scrollPercent * 30 : 0;
+            
+            // Применяем трансформацию
+            circle.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scale}) rotate(${rotate}deg)`;
         });
+        
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', function() {
+        lastScrollY = window.scrollY;
+        
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateCircles();
+                ticking = false;
+            });
+            ticking = true;
+        }
     });
     
-    // ===== ПЛАВНЫЙ СКРОЛЛ ДЛЯ МЕНЮ =====
+    // ===== ПЛАВНЫЙ СКРОЛЛ =====
     const navLinks = document.querySelectorAll('.nav-menu a');
     
     navLinks.forEach(link => {
@@ -65,5 +87,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
+    });
+    
+    // ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.service-card, .stat, .about-text p').forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
     });
 });
