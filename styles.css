@@ -739,3 +739,116 @@ section {
         text-align: center;
     }
 }
+/* ===== КОНТАКТЫ С ИКОНКАМИ ===== */
+.contact-info {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--gray-200);
+}
+
+.contact-info p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--gray-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.contact-info i {
+    color: var(--blue-600);
+    width: 24px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.contact-info a {
+    text-decoration: none;
+    color: var(--gray-700);
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: var(--blue-600);
+}
+
+/* Мессенджеры */
+.messengers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.messenger-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.3s;
+    min-width: 160px;
+}
+
+.messenger-link i {
+    font-size: 22px;
+    width: auto;
+    color: white !important;
+}
+
+/* Telegram */
+.telegram {
+    background: linear-gradient(45deg, #0088cc, #005f8c);
+    color: white !important;
+    box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+}
+
+.telegram:hover {
+    background: linear-gradient(45deg, #00a0e0, #0077b3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 136, 204, 0.4);
+    color: white !important;
+}
+
+/* WhatsApp */
+.whatsapp {
+    background: linear-gradient(45deg, #25D366, #128C7E);
+    color: white !important;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp:hover {
+    background: linear-gradient(45deg, #30e07a, #1fa089);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    color: white !important;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 600px) {
+    .messengers {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .messenger-link {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .contact-info p {
+        font-size: 18px;
+        flex-wrap: wrap;
+    }
+}
