@@ -838,3 +838,23 @@ section {
         flex-wrap: wrap;
     }
 }
+/* --- СМЕНА ЦВЕТОВ ПРИ ПРОКРУТКЕ --- */
+
+/* Начальные цвета (вверху страницы) */
+body {
+    background-color: #f0f0f0;  /* Светло-серый фон */
+    color: #0066cc;              /* Синий текст */
+    transition: background-color 0.5s ease, color 0.5s ease; /* Плавное изменение */
+}
+
+/* Конечные цвета (когда страница прокручена) */
+body.scrolled {
+    background-color: #0066cc;   /* Синий фон */
+    color: #f0f0f0;              /* Серый текст */
+}
+
+/* Чтобы контент не прилипал к краям */
+section, header, footer {
+    padding: 40px 20px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}

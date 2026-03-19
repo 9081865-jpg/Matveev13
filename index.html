@@ -130,6 +130,27 @@
     </div>
 
     <!-- Подключаем скрипты -->
-    <script src="script.js"></script>
+    <script>
+    // Скрипт для смены цвета при прокрутке
+    window.addEventListener('scroll', function() {
+        // Сколько пикселей прокрутили
+        let scrollTop = window.scrollY;
+        // Высота окна браузера
+        let windowHeight = window.innerHeight;
+        // Полная высота страницы
+        let documentHeight = document.body.scrollHeight;
+        
+        // Считаем процент прокрутки
+        let scrollPercent = scrollTop / (documentHeight - windowHeight);
+        
+        // Если прокрутили больше 30% страницы - меняем цвета
+        // Можешь изменить 0.3 на другое значение (0.2 = 20%, 0.5 = 50% и т.д.)
+        if (scrollPercent > 0.3) {
+            document.body.classList.add('scrolled');
+        } else {
+            document.body.classList.remove('scrolled');
+        }
+    });
+</script>
 </body>
 </html>
