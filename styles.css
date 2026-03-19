@@ -821,20 +821,6 @@ section {
     color: white !important;
 }
 
-/* WhatsApp */
-.whatsapp {
-    background: linear-gradient(45deg, #25D366, #128C7E);
-    color: white !important;
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-}
-
-.whatsapp:hover {
-    background: linear-gradient(45deg, #30e07a, #1fa089);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-    color: white !important;
-}
-
 /* Адаптация для мобильных */
 @media (max-width: 600px) {
     .messengers {
